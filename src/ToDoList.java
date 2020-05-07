@@ -71,18 +71,18 @@ public class ToDoList {
 			String taskSelect = taskSelectInput.nextLine(); 
 			String value = myList.get(taskSelect); //stores the methods output
 			do {
-				if(value != null) {
+				if(myList.containsKey(taskSelect) == true) {
 					System.out.println("\nTask: " + "\"" + taskSelect + "\"" + " Status: " + myList.get(taskSelect));
 					break;
 				} else {
-					System.out.println("\nThe task name does not exist. Enter the exact name of the task you would like to select (case sensitive): ");
 					checkStatus();
+					System.out.println("\nInvalid input. The task name does not exist.\nEnter the exact name of the task you would like to select (case sensitive): ");		
 					taskSelect = taskSelectInput.nextLine();
 				}
-			} while(value == null);
+			} while(myList.isEmpty() == false);
 			
 			Scanner updateStatusInput = new Scanner(System.in);
-			System.out.println("Input number:\n[1] Mark complete\n[2] Mark incomplete\n[3] Return to List\n[4] Exit Program");
+			System.out.println("\nInput number:\n[1] Mark complete\n[2] Mark incomplete\n[3] Return to List\n[4] Exit Program");
 			int updateStatus = updateStatusInput.nextInt();
 			do {			
 				switch(updateStatus) {
