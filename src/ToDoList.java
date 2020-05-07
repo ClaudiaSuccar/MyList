@@ -24,18 +24,16 @@ public class ToDoList {
 
 		private static void promptUser() {
 			System.out.println("Welcome to ToDoList, a command line task manager.");
-			System.out.println("Please enter 5 tasks");
+			System.out.println("Please enter 5 tasks.");
 			int n = 1;
-			do {
-				System.out.println("Task " + n + ": ");
-				Scanner inputTask = new Scanner(System.in);
-				String taskName = inputTask.nextLine();
-				myList.put(taskName, "INCOMPLETE");
-				n++;
-			} while(n < 6);
-		}
-		
-		
+				do {
+					System.out.println("Task " + n + ": ");
+					Scanner inputTask = new Scanner(System.in);
+					String taskName = inputTask.nextLine();
+					myList.put(taskName, "INCOMPLETE");
+					n++;
+				} while(n < 6);
+			}		
 		
 		private static void taskStatus() {
 			checkStatus();
@@ -69,9 +67,20 @@ public class ToDoList {
 		private static void taskSelect() {
 			checkStatus();
 			Scanner taskSelectInput = new Scanner(System.in);
-			System.out.println("\nEnter the name of the task you would like to select: ");
-			String taskSelect = taskSelectInput.nextLine();
-			System.out.println("\nTask: " + "\"" + taskSelect + "\"" + " Status: " + myList.get(taskSelect));
+			System.out.println("\nEnter the exact name of the task you would like to select (case sensitive): ");
+			String taskSelect = taskSelectInput.nextLine(); 
+			String value = myList.get(taskSelect); //stores the methods output
+			do {
+				if(value != null) {
+					System.out.println("\nTask: " + "\"" + taskSelect + "\"" + " Status: " + myList.get(taskSelect));
+					break;
+				} else {
+					System.out.println("\nThe task name does not exist. Enter the exact name of the task you would like to select (case sensitive): ");
+					checkStatus();
+					taskSelect = taskSelectInput.nextLine();
+				}
+			} while(value == null);
+			
 			Scanner updateStatusInput = new Scanner(System.in);
 			System.out.println("Input number:\n[1] Mark complete\n[2] Mark incomplete\n[3] Return to List\n[4] Exit Program");
 			int updateStatus = updateStatusInput.nextInt();
