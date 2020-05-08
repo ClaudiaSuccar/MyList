@@ -1,5 +1,5 @@
-# MyList
-- MyList is a command line task manager with the ability to mark items from incomplete to complete and vise versa.
+# TaskFive
+- TaskFive is a command line task manager with the ability to mark items from incomplete to complete and vise versa.
 - Utilizes hashmaps to store key=value pairs.
   - Example "Key": "\<Task_Name\>"; "Value": "\<INCOMPLETE\>"
 - Makes use of Iterator, Map, and Set objects to display hashmap data.
